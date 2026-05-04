@@ -1,0 +1,8 @@
+LT0021,Laptop,Dell Latitude 3190,Available,450
+TB0045,Tablet,Apple iPad 10th Gen,Borrowed,329.99
+RK0001,Robotics Kit,LEGO Spike Prime,Under Repair,385
+AC0099,Accessory,USB-C Charger 65W,Available,25
+LT0022,Laptop,Lenovo ThinkPad E14,Borrowed,550
+TB0012,Tablet,Samsung Galaxy Tab S6,Available,280
+RK0004,Robotics Kit,VEX IQ Education Kit,Available,420
+AC0105,Accessory,Logitech Wireless Mouse,Borrowed,15.5
