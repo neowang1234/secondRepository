@@ -1,4 +1,4 @@
-LT0021,Laptop,Dell Latitude 3190,Available,450
+LT0021,Laptop,Dell Latitude 3190Available,450
 TB0045,Tablet,Apple iPad 10th Gen,Borrowed,329.99
 RK0001,Robotics Kit,LEGO Spike Prime,Under Repair,385
 AC0099,Accessory,USB-C Charger 65W,Available,25

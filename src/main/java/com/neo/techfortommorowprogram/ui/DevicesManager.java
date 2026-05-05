@@ -9,6 +9,7 @@ import com.neo.techfortommorowprogram.service.DeviceBorrowedTotalCalculator;
 import com.neo.techfortommorowprogram.service.DeviceDeleter;
 import com.neo.techfortommorowprogram.service.DeviceSearcher;
 import com.neo.techfortommorowprogram.domain.TechDevice;
+import com.neo.techfortommorowprogram.exception.TechDeviceException;
 import com.neo.techfortommorowprogram.service.DeviceStatusUpdater;
 import com.neo.techfortommorowprogram.repo.DeviceFileReader;
 import com.neo.techfortommorowprogram.repo.DeviceFileUpdater;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
  */
 import com.neo.techfortommorowprogram.repo.DeviceFileUpdater;
 import com.neo.techfortommorowprogram.repo.DeviceFileReader;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +44,12 @@ public class DevicesManager {
     private final String HELP_OPTION = "8";
     private final String IMPORT_FILE_HELP_OPTION = "9";
 
-    public void initDevices(String filepath) {
+    public void initDevices(String filepath) throws IOException, TechDeviceException {
         DeviceFileReader importFile = new DeviceFileReader(); //reads the data file in the ImportFile class
         this.inventory = importFile.importFile(filepath); //creates a new array list of TechDevice objects using the read data from the file
     }
 
-    public void manageDevices() {
+    public void manageDevices() throws IOException {
         String option = displayMenu(); //invokes the displayMenu method, displaying the main meny to the user
         if (option != null) { //If the did not press cancel
             while (!option.equals("10") && !option.equals("")) { //while the user has decided to quit or enter nothing
@@ -103,7 +105,7 @@ public class DevicesManager {
      *
      * @param option The choice the user chose in the main menu
      */
-    private void decisionBranch(String option) {
+    private void decisionBranch(String option) throws IOException {
 
         if (option.equals(ADD_DEVICE_OPTION)) { //if the user entered 1 (Add a Device choice)
             addDevice();
@@ -204,10 +206,13 @@ public class DevicesManager {
         }
     }
 
-    private void saveChanges() {
+    private void saveChanges() throws IOException {
         DeviceFileUpdater dataSaver = new DeviceFileUpdater(); //instantiates SaveChanges class
         //This is the only way to set dataSaved to true
         dataSaved = dataSaver.save(this.inventory); //invokes the save behaviour of the object, reutrning a true boolean if the file is succesfully saved. 
+        if (dataSaved) {
+            JOptionPane.showMessageDialog(null, "Save Data succesfully saved!"); //displays succesful save message
+        }
     }
 
     private void helpMenu() {

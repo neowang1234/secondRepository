@@ -24,7 +24,7 @@ public class DeviceFileUpdater {
      * @param inventory The array list of TechDevices
      * @return whether of not the save was a success
      */
-    public boolean save(List<TechDevice> inventory) {
+    public boolean save(List<TechDevice> inventory) throws IOException {
         boolean succesfulSave = false; //boolean tracker is file was succesfully saved, assumes false
         
         JFileChooser fileChooser = new JFileChooser(); //instantiates the JFileChooser object
@@ -43,10 +43,7 @@ public class DeviceFileUpdater {
                     writer.write(inventory.get(i).getReplacementValue() + ",");
                     writer.write(System.lineSeparator()); //after every full file insert, writes line break
                 }
-                JOptionPane.showMessageDialog(null, "Save Data succesfully saved!"); //displays succesful save message
                 succesfulSave = true; //sets boolean tracker to true
-            } catch (IOException e) { //catches error
-                JOptionPane.showMessageDialog(null,"Error: " + e); //displays error message
             }
 
         }
